@@ -1,0 +1,36 @@
+Pertanyaan Refleksi
+Setelah menyelesaikan kode, jawab pertanyaan berikut:
+
+1. Apa perbedaan antara interface dengan class biasa?
+2. Mengapa interface tidak memiliki implementasi method di dalamnya?
+3. Apa tujuan penggunaan keyword "implements" pada sebuah class?
+4. Apakah sebuah class dapat mengimplementasikan lebih dari satu interface? Jelaskan dan berikan contoh sederhana.
+5. Jika sebuah class mengimplementasikan interface, apa yang terjadi jika class tersebut tidak mengimplementasikan semua method dari interface tersebut?
+
+jawaban:
+1. - Interface hanya mendeklarasikan method tanpa implementasi (kecuali default/static method), semua method defaultnya public abstract
+   - Class biasa memiliki implementasi konkret, bisa punya variabel instance, constructor, dan method dengan berbagai access modifier
+   - Interface tidak bisa diinstansiasi langsung, class biasa bisa
+   - Satu class bisa implement banyak interface, tapi hanya extend satu class
+   - Interface hanya bisa punya konstanta (public static final), class bisa punya berbagai jenis variabel
+2. Karena interface dirancang sebagai kontrak murni yang hanya mendefinisikan "apa yang harus dilakukan", bukan "bagaimana melakukannya". Ini memungkinkan fleksibilitas implementasi yang berbeda-beda oleh masing-masing class yang mengimplementasikannya, sesuai dengan kebutuhan spesifik mereka.
+3. Keyword "implements" digunakan untuk menyatakan bahwa sebuah class berjanji menyediakan implementasi konkret untuk semua method yang dideklarasikan di interface tersebut. Ini adalah komitmen class untuk mematuhi kontrak yang ditetapkan oleh interface.
+4. bisa, satu class bisa mengimplementasikan lebih dari satu interface. Contoh:
+   interface CanFly {
+       void fly();
+   }
+
+   interface CanSwim {
+       void swim();
+   }
+
+   class Duck implements CanFly, CanSwim {
+       public void fly() {
+           System.out.println("Bebek terbang");
+       }
+
+       public void swim() {
+           System.out.println("Bebek berenang");
+       }
+   }
+5. Class tersebut akan error saat compile time. Java akan memaksa class untuk mengimplementasikan semua method abstract dari interface yang diimplementasikan. Jika ada yang tidak diimplementasikan, class harus dideklarasikan sebagai abstract class dan method yang belum diimplementasikan menjadi tanggung jawab subclass-nya.

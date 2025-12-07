@@ -1,0 +1,26 @@
+Pertanyaan Refleksi
+Setelah menyelesaikan kode, jawab pertanyaan berikut:
+
+Jelaskan perbedaan antara fungsi (function) dan prosedur (procedure) dalam pemrograman berorientasi objek.
+Mengapa penting menggunakan konstanta (final variables) dalam suatu kelas? Apa keuntungannya?
+Apa yang terjadi jika kita mencoba mengubah nilai suatu konstanta setelah objek dibuat? Berikan contoh.
+Bagaimana cara mendefinisikan konstanta dalam bahasa Java?
+
+Jawaban
+1. - Fungsi (function) adalah method yang mengembalikan nilai ke pemanggilnya. Dalam kode ini, hitungBMI() dan hitungKalori() adalah fungsi karena memiliki return type double dan menggunakan statement return untuk mengembalikan hasil perhitungan. Contoh: double hasilBMI = p.hitungBMI(); dapat menyimpan nilai kembalian.
+   - Prosedur (procedure) adalah method yang tidak mengembalikan nilai, hanya melakukan aksi atau menampilkan output. Dalam kode ini, tampilKategori() dan tampilInfo() adalah prosedur karena return type-nya void dan tidak memiliki statement return. Contoh: p.tampilInfo(); hanya menampilkan output tanpa mengembalikan nilai yang dapat disimpan.
+2. Konstanta faktorAktivitas = 1.2 dibuat sebagai final karena nilainya merupakan standar medis yang tidak boleh berubah.
+   Keuntungannya:
+   - Keamanan data: Mencegah perubahan nilai secara tidak sengaja
+   - Kode lebih jelas: Memberi tahu programmer lain bahwa nilai 1.2 adalah tetap dan tidak boleh dimodifikasi
+   - Maintenance mudah: Jika tim medis mengubah standar, cukup ubah di satu tempat (deklarasi konstanta) dan perubahan berlaku di semua pemanggilan
+   - Konsistensi: Memastikan semua pengguna menggunakan faktor aktivitas yang sama
+3. p.faktorAktivitas = 1.5;
+   akan error: cannot assign a value to final variable faktorAktivitas
+   karena: Compiler Java mendeteksi upaya mengubah variabel yang dideklarasikan final dan menolak untuk mengompilasi kode tersebut. Program tidak akan bisa dijalankan sampai baris tersebut dihapus atau dikomentari.
+4. Konstanta didefinisikan dengan menambahkan keyword final sebelum tipe data, diikuti dengan nama konstanta dan nilai inisialisasinya.
+   final double faktorAktivitas = 1.2;
+   - final: variabel konstanta (tidak bisa diubah)
+   - double: tipe data konstanta
+   - faktorAktivitas: nama konstanta (menggunakan camelCase untuk konstanta instance)
+   - 1.2: nilai awal yang tidak bisa diubah setelah inisialisasi

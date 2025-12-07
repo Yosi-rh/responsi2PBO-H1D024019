@@ -1,0 +1,54 @@
+[PERTANYAAN PENGAYAAN]
+
+1. Mengapa constructor di class Member wajib memanggil constructor Customer menggunakan super(...)?
+
+2. Apa tujuan memanggil super.tampilkanInfo() saat melakukan overriding method di subclass?
+
+3. Berikan contoh kondisi di mana pemanggilan super.method() sangat penting dalam pewarisan.
+
+4. Bagaimana keyword super membantu membedakan atribut yang memiliki nama sama antara parent dan child?
+
+5. Mengapa pendekatan inheritance lebih efisien dibanding menyalin ulang seluruh atribut dan method ke dalam class Member?
+
+jawaban:
+1.  Karena constructor parent class tidak diwariskan ke child class. Ketika membuat objek Member, Java perlu menginisialisasi terlebih dahulu bagian yang diwarisi dari parent class (Customer). Jika tidak memanggil super(...)
+    maka:
+    - Atribut nama, id, dan totalBelanja dari parent tidak akan terinisialisasi
+    - Akan terjadi error karena Java otomatis menambahkan super() (tanpa parameter) yang tidak ada di parent
+    - Objek akan dalam keadaan tidak valid karena data dasarnya tidak ada
+2. Tujuannya adalah untuk menggunakan kembali (reuse) kode yang sudah ada di parent class, kemudian menambahkan fungsionalitas baru. Ini mencegah duplikasi kode dan memastikan konsistensi.
+   @Override
+   void tampilkanInfo() {
+       super.tampilkanInfo();
+       System.out.println("Poin Reward: " + poinReward + " | Level: " + level);
+   }
+3. Pemanggilan super.method() sangat penting saat:
+   - Method parent melakukan validasi/logika penting
+   - Mengelola sumber daya yang harus dibersihkan
+   - Mengimplementasikan template method pattern
+4. Dalam Java, ketika child class mendeklarasikan atribut dengan nama yang sama seperti parent, terjadi variable shadowing, super berfungsi sebagai penunjuk alamat ke ruang lingkup parent class.
+   Kapan dibutuhkan:
+   - Ketika perlu akses kedua versi (parent dan child)
+   - Dalam constructor untuk inisialisasi yang berbeda
+   - Dalam method override yang perlu memproses data parent dan child
+5. Inheritance (pewarisan) adalah konsep fundamental dalam pemrograman berorientasi objek yang memungkinkan class baru (child class) untuk mewarisi sifat dan perilaku dari class yang sudah ada (parent class).
+   perbandingan:
+   Dengan Inheritance:
+   Bug fix: Perbaikan di parent, semua child fixed
+   Feature update: Tambah di parent, semua child dapat
+   Code review: Cukup review parent
+   Testing: Test parent cukup
+
+   Tanpa Inheritance:
+   Bug fix: Perbaikan harus di setiap class
+   Feature update: Tambah di setiap class manual
+   Code review: Harus review semua class
+   Testing: Test setiap class terpisah
+
+   - Efisiensi Penulisan Kode
+   - Efisiensi Maintenance
+   - Efisiensi Konseptual dan Desain
+   - Efisiensi pada Runtime
+   - Efisiensi dalam Pengembangan Tim
+   - Efisiensi untuk Evolusi Sistem
+

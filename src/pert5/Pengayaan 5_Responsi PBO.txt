@@ -1,0 +1,23 @@
+SOAL PENGAYAAN (Refleksi Polimorfisme)
+Jawablah pertanyaan berikut:
+1. Apa yang dimaksud dengan polimorfisme dalam OOP? Jelaskan bagaimana metode override bekerja.
+2. Mengapa array bertipe DefaultMesin dapat menyimpan objek MesinMotor dan MesinTraktor?
+3. Apa perbedaan override dan overload?
+4. Apa keuntungan menggunakan polimorfisme dalam sistem inventaris seperti contoh di atas?
+5. Bagaimana cara kerja dynamic dispatch pada Java saat memanggil method override?
+
+jawaban:
+1. Polimorfisme berasal dari kata "poly" (banyak) dan "morph" (bentuk). Dalam OOP, polimorfisme adalah kemampuan satu objek untuk memiliki banyak bentuk. Artinya, objek dari child class bisa diperlakukan sebagai objek dari parent class, tetapi saat method dipanggil, Java akan menjalankan implementasi yang sesuai dengan tipe asli objek tersebut.
+   Cara kerja method override:
+   - Ketika child class mendefinisikan ulang method yang sudah ada di parent class dengan nama dan parameter yang sama persis
+   - Saat runtime, Java akan memeriksa tipe sebenarnya dari objek (bukan tipe referensinya)
+   - Java akan menjalankan implementasi method dari class sebenarnya
+   - Ini memungkinkan perilaku yang berbeda untuk objek yang sama-sama bertipe parent
+2. Ini karena hubungan inheritance (pewarisan). Ketika class MesinMotor extends DefaultMesin, berarti MesinMotor adalah tipe DefaultMesin juga. Java mengizinkan penyimpanan objek subclass dalam variabel bertipe superclass (upcasting), karena semua subclass pasti memiliki minimal semua method yang ada di superclass.
+3. - Override: Method di subclass dengan nama dan parameter sama persis seperti di superclass, digunakan untuk mengubah implementasi
+   - Overload: Beberapa method dalam satu class dengan nama sama tapi parameter berbeda, digunakan untuk memberikan variasi cara pemanggilan
+4. - Code reusability: Kode yang sama bisa bekerja untuk berbagai jenis objek
+   - Extensibility: Mudah menambah jenis mesin baru tanpa mengubah kode yang sudah ada
+   - Maintainability: Perubahan logika bisnis cukup dilakukan di satu tempat
+   - Clean code: Memisahkan interface (apa yang dilakukan) dari implementasi (bagaimana melakukannya)
+5. Dynamic dispatch adalah mekanisme Java yang menentukan method mana yang akan dieksekusi saat runtime. Ketika memanggil method yang di-override, Java tidak memilih method berdasarkan tipe referensi (compile-time), tapi berdasarkan tipe aktual objek (runtime). Java menggunakan virtual method table untuk menyimpan referensi ke implementasi method yang sebenarnya, dan saat pemanggilan, Java akan mencari di tabel ini berdasarkan tipe objek sebenarnya.
